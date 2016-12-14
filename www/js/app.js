@@ -7,7 +7,8 @@ angular.module('starter', [
   'ionic',
   'starter.viewForm',
   'starter.viewList',
-  'starter.services'
+  'starter.services',
+  'starter.schemaDB'
 ])
 
 .run(function($ionicPlatform) {
