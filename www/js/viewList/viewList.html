@@ -3,6 +3,7 @@
 
     <div class="card" ng-repeat="item in itemsList">
       <div class="item item-divider" ng-click="gotoEdit(item.id)">
+        {{item.id}}
         {{item.title}}
       </div>
       <div class="item item-text-wrap">
@@ -10,7 +11,7 @@
       </div>
     </div>
 
-    <a href="#/form/" class="button button-block button-positive">
+    <a href="#/viewForm" class="button button-block button-positive">
       <i class="icon ion-plus-circled"></i> Ajouter
     </a>
   </ion-content>

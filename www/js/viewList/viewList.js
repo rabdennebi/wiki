@@ -1,12 +1,17 @@
-angular.module ('starter.viewList', ['ngRoute'])
+angular.module ('starter.viewList', ['starter.services'])
 
-.config(['$routeProvider', function($routeProvider) {
+.config(function($stateProvider) {
 
-  $routeProvider.when('/viewlist', {
-    templateUrl: 'viewlist/viewlist.html',
+  // $routeProvider.when('/viewlist', {
+  //   templateUrl: 'viewlist/viewlist.html',
+  //     controller: 'viewListCtrl'
+  // });
+  $stateProvider.state('viewList', {
+      url: '/viewList',
+      templateUrl: 'js/viewlist/viewlist.html',
       controller: 'viewListCtrl'
-  });
-}])
+  })
+})
 .controller('viewListCtrl', function ($scope,$ionicPlatform, $state, NotesDataService) {
 
    $scope.$on('$ionicView.enter', function(e) {
@@ -16,6 +21,6 @@ angular.module ('starter.viewList', ['ngRoute'])
    })
 
    $scope.gotoEdit = function(idNote){
-     $state.go('form', {id: idNote})
+     $state.go('viewForm', {id: idNote})
    }
  });

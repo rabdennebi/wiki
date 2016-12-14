@@ -1,17 +1,24 @@
-angular.module ('starter.viewForm', ['ngRoute'])
+angular.module ('starter.viewForm', ['starter.services'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/viewForm', {
-    templateUrl: 'viewForm/viewForm.html',
-      controller: 'viewFormCtrl'
-  });
-}])
+.config(function($stateProvider) {
+
+  $stateProvider.state('viewForm', {
+      url: '/viewForm',
+      templateUrl: 'js/viewForm/viewForm.html',
+      controller: 'viewFormCtrl',
+      params: {
+        id: {value: null},
+      },
+  })
+})
+
 .controller('viewFormCtrl', function ($scope, $stateParams, $ionicPopup, $state, NotesDataService) {
     $scope.$on('$ionicView.enter', function(e) {
       initForm()
     })
 
     function initForm(){
+      console.log($stateParams.id)
       if($stateParams.id){
         NotesDataService.getById($stateParams.id, function(item){
           $scope.noteForm = item
@@ -21,7 +28,7 @@ angular.module ('starter.viewForm', ['ngRoute'])
       }
     }
     function onSaveSuccess(){
-      $state.go('list')
+      $state.go('viewList')
     }
     $scope.saveNote = function(){
 

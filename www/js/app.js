@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', [
   'ionic',
-  'ngRoute',
   'starter.viewForm',
-  'starter.viewList'
+  'starter.viewList',
+  'starter.services'
 ])
 
 .run(function($ionicPlatform) {
@@ -27,7 +27,13 @@ angular.module('starter', [
     }
   });
 })
-.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-  $routeProvider.otherwise({redirectTo: '/viewMain'});
-}]);
+
+.config(function($stateProvider, $urlRouterProvider) {
+    // $urlRouterProvider.hashPrefix('!');
+    $urlRouterProvider.otherwise('/viewList');
+});
+//
+// .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+//   $locationProvider.hashPrefix('!');
+//   $routeProvider.otherwise({redirectTo: '/viewList'});
+// }]);
