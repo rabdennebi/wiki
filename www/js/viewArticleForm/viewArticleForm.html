@@ -1,0 +1,25 @@
+<ion-view view-title="{{categorieTitle}}">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Title" ng-model="article.title">
+      </label>
+      <label class="item item-input">
+        <textarea placeholder="Comments" ng-model="article.content"></textarea>
+      </label>
+    </div>
+
+    <button ng-show="!article.id" class="button button-full button-positive ng-hide" ng-click="saveNote()">
+      Sauvegarder
+    </button>
+
+    <div ng-show="article.id" class="button-bar">
+      <a class="button button-positive" ng-click="saveNote()">
+        <i class="icon ion-checkmark"></i>
+      </a>
+      <a class="button button-assertive" ng-click="confirmDelete(article.id)">
+        <i class="icon ion-trash-b"></i>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

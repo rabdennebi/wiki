@@ -7,6 +7,8 @@ angular.module('starter', [
   'ionic',
   'starter.viewForm',
   'starter.viewList',
+  'starter.viewArticleList',
+  'starter.viewArticleForm',
   'starter.services',
   'starter.schemaDB'
 ])

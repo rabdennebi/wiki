@@ -9,7 +9,7 @@ angular.module ('starter.viewList', ['starter.services'])
   })
 })
 .controller('viewListCtrl', function ($scope, $ionicPlatform, $state, wikiListService) {
-
+$scope.categorieTitle="gto";
    $scope.$on('$ionicView.enter', function(e) {
        wikiListService.getAll(function(data){
          $scope.itemsList = data;

@@ -40,20 +40,22 @@ angular.module('starter.services', ['ngCordova'])
         });
         var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
         factory.query(query);
+        //factory.query('INSERT INTO w_article (id_category, title, author, content, last_modif, creation, image, description)
+        //VALUES(1, "java", "rabah", "gto", 78457845, 78455899, "gto.png", "oh tu vas bien") ');
       });
     };
     function query(query, bindings) {
       bindings = typeof bindings !== 'undefined' ? bindings : [];
       var deferred = $q.defer();
       $ionicPlatform.ready(function () {
-        $ionicPlatform.ready(function () {
           $cordovaSQLite.execute(db, query, bindings).then(function(result){
               deferred.resolve(result);
             }, function(error){
+
+                console.log(error);
                 deferred.reject(error);
             }
           );
-    		});
       });
   	  return deferred.promise;
     };

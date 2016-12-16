@@ -16,7 +16,7 @@ angular.module ('starter.viewForm', ['starter.services'])
     $scope.$on('$ionicView.enter', function(e) {
       initForm()
     })
-
+$scope.categorieTitle="Edition d'une note";
     function initForm(){
       console.log($stateParams.id)
       if($stateParams.id){
