@@ -16,11 +16,15 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
     $scope.$on('$ionicView.enter', function(e) {
       initForm()
     })
-$scope.categorieTitle="Edition d'un article";
+    $scope.categorieTitle="Edition d'un article";
+
     function initForm(){
-      console.log($stateParams.id)
+    //  console.log($stateParams)
       if($stateParams.id){
         wikiArticleFromService.getById($stateParams.id, function(item){
+          var cheminImage='js/viewArticleForm/image/';
+          //item.image=cheminImage + item.image;
+          item.image=cheminImage + item.image;
           $scope.article = item
         })
       } else {
@@ -28,14 +32,15 @@ $scope.categorieTitle="Edition d'un article";
       }
     }
     function onSaveSuccess(){
-      $state.go('viewList')
+      $state.go('viewArticleList')
     }
     $scope.saveNote = function(){
-
+      $scope.article.id_category=1;
       if(!$scope.article.id){
-        wikiArticleFromService.createNote($scope.article).then(onSaveSuccess)
+      //  console.log($scope.article);
+        wikiArticleFromService.createArticle($scope.article).then(onSaveSuccess)
       } else {
-        wikiArticleFromService.updateNote($scope.article).then(onSaveSuccess)
+        wikiArticleFromService.updateArticle($scope.article).then(onSaveSuccess)
       }
     }
 
@@ -47,36 +52,37 @@ $scope.categorieTitle="Edition d'un article";
 
       confirmPopup.then(function(res) {
         if(res) {
-          wikiArticleFromService.deleteNote(idNote).then(onSaveSuccess)
+          wikiArticleFromService.deleteArticle(idNote).then(onSaveSuccess)
         }
       })
     }
 })
-.factory ('wikiFromService', function (model) {
+.factory ('wikiArticleFromService', function (model) {
 
  var factory = {
      getById : getById,
-     createNote : createNote,
-     updateNote : updateNote,
-     deleteNote : deleteNote
+     createArticle : createArticle,
+     updateArticle : updateArticle,
+     deleteArticle : deleteArticle
    };
  return factory;
 
  function getById (id,callback) {
+  // console.log(id);
    return model.query('SELECT * FROM w_article where id = ?', [id]).then(function(result){
      callback(model.fetch(result));
    });
  };
 
  function createArticle (Article) {
-   return model.query('INSERT INTO w_article ( title, author, content, last_modif, creation, image, content) VALUES(?, ?, ?, ?, ?, ?, ?)',
-   [Article.title, Article.author, Article.content, Article.last_modif, Article.creation, Article.image, Article.content]);
+   return model.query('INSERT INTO w_article ( title, author, content, last_modif, creation, image, id_category) VALUES(?, ?, ?, ?, ?, ?, ?)',
+   [Article.title, Article.author, Article.content, Article.last_modif, Article.creation, Article.image, Article.id_category]);
 
  };
 
  function updateArticle (Article) {
    return model.query('UPDATE w_article set title = ?, author = ?, content = ?, last_modif = ?, creation = ?, image = ?, content = ?  where id = ?',
-   [Article.title, Article.author, Article.content, Article.last_modif, Article.creation, Article.image, Article.content]);
+   [Article.title, Article.author, Article.content, Article.last_modif, Article.creation, Article.image, Article.content, Article.id]);
  };
 
  function deleteArticle (id) {

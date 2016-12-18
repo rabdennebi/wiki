@@ -1,7 +1,7 @@
 angular.module('starter.schemaDB', [])
 
 .constant("DB_CONFIG",  {
-    name: 'wikiDB2',
+    name: 'wikiDB3',
 	version:'1.1',
 	description: "database",
     tables: [
@@ -18,6 +18,7 @@ angular.module('starter.schemaDB', [])
 				{name: 'id', type: 'INTEGER  PRIMARY KEY AUTOINCREMENT'},
         {name: 'id_category', type: 'int NULL'},
 				{name: 'title', type: 'varchar(255) NOT NULL'},
+        {name: 'id_user', type: 'int NULL'},
         {name: 'author', type: 'varchar(255) NOT NULL'},
         {name: 'content', type: 'text NOT NULL'},
 				{name: 'last_modif', type: 'datetime NULL'},
@@ -40,6 +41,28 @@ angular.module('starter.schemaDB', [])
         {name: 'id_article', type: 'int NULL'},
         {name: 'id_category', type: 'int NULL'},
         {name: 'tag', type: 'text NOT NULL'}
+			]
+    },{
+			name: 'w_user',
+			columns: [
+				{name: 'id', type: 'INTEGER  PRIMARY KEY AUTOINCREMENT'},
+        {name: 'nom', type: 'text NOT NULL'},
+        {name: 'compte', type: 'text NOT NULL'},
+        {name: 'mdp', type: 'text NOT NULL'}
+			]
+    },{
+			name: 'w_Like',
+			columns: [
+				{name: 'id', type: 'INTEGER  PRIMARY KEY AUTOINCREMENT'},
+        {name: 'id_article', type: 'int NULL'},
+        {name: 'id_user', type: 'int NULL'}
+			]
+    },{
+			name: 'w_Comments',
+			columns: [
+				{name: 'id', type: 'INTEGER  PRIMARY KEY AUTOINCREMENT'},
+        {name: 'nom', type: 'text NOT NULL'},
+        {name: 'commentaire', type: 'text NOT NULL'}
 			]
     }
     ]

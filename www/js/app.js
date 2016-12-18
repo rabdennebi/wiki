@@ -10,7 +10,8 @@ angular.module('starter', [
   'starter.viewArticleList',
   'starter.viewArticleForm',
   'starter.services',
-  'starter.schemaDB'
+  'starter.schemaDB',
+  'starter.directiveCodeSQL'
 ])
 
 .run(function($ionicPlatform) {
@@ -33,7 +34,7 @@ angular.module('starter', [
 
 .config(function($stateProvider, $urlRouterProvider) {
     // $urlRouterProvider.hashPrefix('!');
-    $urlRouterProvider.otherwise('/viewList');
+    $urlRouterProvider.otherwise('/viewArticleList');
 });
 //
 // .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
