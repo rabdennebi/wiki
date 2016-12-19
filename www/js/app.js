@@ -12,6 +12,7 @@ angular.module('starter', [
   'starter.services',
   'starter.schemaDB',
   'starter.directiveCodeSQL'
+  'starter.rule'
 ])
 
 .run(function($ionicPlatform) {
