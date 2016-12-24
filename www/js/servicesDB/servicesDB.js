@@ -40,7 +40,7 @@ angular.module('starter.services', ['ngCordova'])
         });
         var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
         factory.query(query);
-        //factory.query('INSERT INTO w_article (id_category, title, author, content, last_modif, creation, image, description)  VALUES(1, "cards", "Marty McFly", "This is a Facebook styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.", 1481899570, 1481899570, "delorean.jpg", "This is a Facebook styled Card.") ');
+        // factory.query('INSERT INTO w_article (id_category, title, author, content, last_modif, creation, image, description)  VALUES(1, "cards", "Marty McFly", "This is a Facebook styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.", 1481899570, 1481899570, "delorean.jpg", "This is a Facebook styled Card.") ');
       });
     };
     function query(query, bindings) {

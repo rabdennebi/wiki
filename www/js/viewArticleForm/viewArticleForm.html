@@ -1,57 +1,26 @@
 <ion-view view-title="{{categorieTitle}}">
   <ion-content>
     <div class="list card">
-
-  <div class="item item-avatar">
-    <!-- <img src="mcfly.jpg"> -->
-    <h2>{{article.title}}</h2>
-    <p>{{article.creation | date :'MM/dd/yyyy hh:mm'}} -- {{article.author}}</p>
-  </div>
-
-  <div class="item item-body">
-  <ng-code type="css">
-    <div ng-show="false" class="content">
-      function onSaveSuccess(){
-        $state.go('viewList')
-      }
+      <div class="item item-avatar">
+        <!-- <img src="mcfly.jpg"> -->
+        <h2>{{article.title}}</h2>
+        <p>{{article.creation | date :'MM/dd/yyyy hh:mm'}} -- {{article.author}}</p>
+      </div>
     </div>
-    <ng-result ng-show="true" type="css"></ng-result>
-  </ng-code>
-    <img class="full-image" src="{{article.image}}">
-    <p>
-      {{article.content}}
-    </p>
-    <p>
-
-      <a href="#" class="subdued">{{article.Like}} Like</a>
-      <a href="#" class="subdued">{{article.comments}} Comments</a>
-    </p>
-  </div>
-
-<!-- </div>
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" placeholder="Title" ng-model="article.title">
-      </label>
-      <label class="item item-input">
-        <textarea placeholder="Comments" ng-model="article.author"></textarea>
-        <textarea placeholder="Comments" ng-model="article.last_modif"></textarea>
-        <textarea placeholder="Comments" ng-model="article.creation"></textarea>
-        <textarea placeholder="Comments" ng-model="article.image"></textarea>
-        <textarea placeholder="Comments" ng-model="article.content"></textarea>
-      </label>
+    {{gto}}
+    <div class="item item-body">
+      <img class="full-image" src="{{article.image}}">
+      <pre class="ng-code" id="editor{{article.id}}" type="{{type}}" theme="{{theme}}" isTrue={{istrue}} style=" position: absolute;      top: 0;      right: 0;      bottom: 0;      left: 0;">
+function gto(){
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/monokai");
+editor.getSession().setMode("ace/mode/javascript");
+}
+      </pre>
+      <p>
+        <a href="#" class="subdued">{{article.Like}} Like</a>
+        <a href="#" class="subdued">{{article.comments}} Comments</a>
+      </p>
     </div>
-    <button ng-show="!article.id" class="button button-full button-positive ng-hide" ng-click="saveNote()">
-      Sauvegarder
-    </button>
-
-    <div ng-show="article.id" class="button-bar">
-      <a class="button button-positive" ng-click="saveNote()">
-        <i class="icon ion-checkmark"></i>
-      </a>
-      <a class="button button-assertive" ng-click="confirmDelete(article.id)">
-        <i class="icon ion-trash-b"></i>
-      </a>
-    </div> -->
-  </ion-content>
+  <!-- </ion-content> -->
 </ion-view>

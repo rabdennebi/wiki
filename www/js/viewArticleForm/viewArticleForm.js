@@ -18,14 +18,18 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
     })
     $scope.categorieTitle="Edition d'un article";
 
+    $scope.istrue = false;
     function initForm(){
-    //  console.log($stateParams)
       if($stateParams.id){
         wikiArticleFromService.getById($stateParams.id, function(item){
           var cheminImage='js/viewArticleForm/image/';
           //item.image=cheminImage + item.image;
           item.image=cheminImage + item.image;
-          $scope.article = item
+          $scope.article = item;
+          $scope.theme = 'monokai';
+          $scope.type = 'javascript';
+          $scope.istrue = true;
+          $scope.article.id = $stateParams.id;
         })
       } else {
         $scope.article = {}
@@ -37,7 +41,6 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
     $scope.saveNote = function(){
       $scope.article.id_category=1;
       if(!$scope.article.id){
-      //  console.log($scope.article);
         wikiArticleFromService.createArticle($scope.article).then(onSaveSuccess)
       } else {
         wikiArticleFromService.updateArticle($scope.article).then(onSaveSuccess)
@@ -68,7 +71,6 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
  return factory;
 
  function getById (id,callback) {
-  // console.log(id);
    return model.query('SELECT * FROM w_article where id = ?', [id]).then(function(result){
      callback(model.fetch(result));
    });
@@ -90,3 +92,19 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
  };
 
 });
+// .factory('editorFactory', function ($scope) {
+//       var factory = {
+//         editor : editor
+//       }
+//
+//     return factory;
+//     function editor(){
+//
+//         console.log("$scope.article");
+//       console.log($scope.article);
+//        var editor = ace.edit("editor"+$scope.id);
+//        editor.setTheme('ace/theme/monokai');
+//        editor.getSession().setMode('ace/mode/javascript');
+//     }
+//
+// });

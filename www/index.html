@@ -17,26 +17,16 @@
     </script>-->
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
+    <link href="js/app.css" rel="stylesheet">
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <!-- <script src="js/servicesDB/servicesDB.js"></script> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script> -->
-
-    <!-- <script src="node_modules/angular-route/angular-route.min.js"></script> -->
-
-    <script src="js/directive/rule/ruleJava.js"></script>
+    <script src="lib/ace-builds/src-noconflict/ace.js"></script>
     <script src="js/directive/directiveCodeSQL.js"></script>
     <script src="js/viewList/viewList.js"></script>
     <script src="js/viewArticleList/viewArticleList.js"></script>
@@ -45,18 +35,17 @@
     <script src="js/servicesDB/schemaDB.js"></script>
     <script src="js/servicesDB/servicesDB.js"></script>
     <script src="js/app.js"></script>
+
+</style>
   </head>
   <body ng-app="starter">
-        <ion-pane>
+    <ion-pane>
       <ion-nav-bar class="bar-positive">
-        <ion-nav-back-button></ion-nav-back-button>
-
-      </button>
-        <!-- <button class="button button-icon icon ion-navicon">zzzzzzzzzzz</button> -->
+        <ion-nav-back-button>
+        </ion-nav-back-button>
       </ion-nav-bar>
-      <ion-nav-view></ion-nav-view>
+      <ion-nav-view>
+      </ion-nav-view>
     </ion-pane>
-
-
   </body>
 </html>
