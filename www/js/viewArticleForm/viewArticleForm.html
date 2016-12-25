@@ -10,13 +10,19 @@
     {{gto}}
     <div class="item item-body">
       <img class="full-image" src="{{article.image}}">
-      <pre class="ng-code" id="editor{{article.id}}" type="{{type}}" theme="{{theme}}" isTrue={{istrue}} style=" position: absolute;      top: 0;      right: 0;      bottom: 0;      left: 0;">
-function gto(){
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.getSession().setMode("ace/mode/javascript");
-}
-      </pre>
+      <div  id="editor{{article.id}}"
+            type="{{type}}"
+            ng-required= "editor(article.id)"
+            theme="{{theme}}"
+            isTrue={{istrue}}
+            style=" position: absolute;      top: 0;      right: 0;      bottom: 0;      left: 0;">
+
+          function gto(){
+          var editor = ace.edit("editor");
+          editor.setTheme("ace/theme/monokai");
+          editor.getSession().setMode("ace/mode/javascript");
+          }
+      </div>
       <p>
         <a href="#" class="subdued">{{article.Like}} Like</a>
         <a href="#" class="subdued">{{article.comments}} Comments</a>

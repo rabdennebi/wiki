@@ -10,8 +10,7 @@ angular.module('starter', [
   'starter.viewArticleList',
   'starter.viewArticleForm',
   'starter.services',
-  'starter.schemaDB',
-  'starter.directiveCodeSQL'
+  'starter.schemaDB'
 ])
 
 .run(function($ionicPlatform) {

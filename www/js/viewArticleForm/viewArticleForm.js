@@ -35,9 +35,23 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
         $scope.article = {}
       }
     }
+
     function onSaveSuccess(){
       $state.go('viewArticleList')
     }
+
+    $scope.editor = function(id){
+      if (id!==undefined) {
+        var edit='editor'+id;
+        var editor = ace.edit(edit);
+        console.log($scope.theme);
+        console.log($scope.type);
+        console.log(edit);
+        editor.setTheme('ace/theme/'+ $scope.theme);
+        editor.getSession().setMode('ace/mode/'+$scope.type);
+      }
+    }
+
     $scope.saveNote = function(){
       $scope.article.id_category=1;
       if(!$scope.article.id){
@@ -92,19 +106,3 @@ angular.module ('starter.viewArticleForm', ['starter.services'])
  };
 
 });
-// .factory('editorFactory', function ($scope) {
-//       var factory = {
-//         editor : editor
-//       }
-//
-//     return factory;
-//     function editor(){
-//
-//         console.log("$scope.article");
-//       console.log($scope.article);
-//        var editor = ace.edit("editor"+$scope.id);
-//        editor.setTheme('ace/theme/monokai');
-//        editor.getSession().setMode('ace/mode/javascript');
-//     }
-//
-// });
